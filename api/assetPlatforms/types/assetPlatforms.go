@@ -8,4 +8,9 @@ type Asset struct {
 	Name            string `json:"name"`
 	ShortName       string `json:"shortName"`
 	NativeCoinId    string `json:"native_coin_id"`
+	Image           struct {
+		Thumb string `json:"thumb"`
+		Small string `json:"small"`
+		Large string `json:"large"`
+	} `json:"image"`
 }
