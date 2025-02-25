@@ -39,3 +39,25 @@ func TestCoinsClient_CoinsMarket(t *testing.T) {
 		})
 	}
 }
+
+func TestCoinsClient_NewCoins(t *testing.T) {
+	tests := []struct {
+		name string
+	}{
+		{
+			name: "test",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			c := NewProApiClient("CG-MgoD1AFUHHCHsKVid7dYMGSm", &http.Client{})
+			got, err := c.CoinsClient.NewCoins(context.Background())
+			if err != nil {
+				t.Errorf("CoinsList() error = %v", err)
+			}
+			if got == nil {
+				t.Errorf("CoinsList() got = nil, want not nil")
+			}
+		})
+	}
+}
