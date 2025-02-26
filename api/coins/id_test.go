@@ -16,7 +16,7 @@ func TestCoinsId(t *testing.T) {
 	}{
 		{
 			name: "stellar",
-			id:   "stellar",
+			id:   "0xmonero",
 		},
 	}
 	for _, tt := range tests {

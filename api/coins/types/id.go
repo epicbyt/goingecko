@@ -1,15 +1,25 @@
 package types
 
-import "github.com/JulianToledano/goingecko/v3/api/types"
+import (
+	"github.com/JulianToledano/goingecko/v3/api/types"
+)
+
+type PlatformInfo struct {
+	DecimalPlace    int    `json:"decimal_place"`
+	ContractAddress string `json:"contract_address"`
+}
+
+type DetailPlatforms map[string]PlatformInfo
 
 type CoinID struct {
-	ID                 string   `json:"id"`
-	Symbol             string   `json:"symbol"`
-	Name               string   `json:"name"`
-	AssetPlatformID    string   `json:"asset_platform_id"`
-	BlockTimeInMinutes int64    `json:"block_time_in_minutes"`
-	HashingAlgorithm   string   `json:"hashing_algorithm"`
-	Categories         []string `json:"categories"`
+	ID                 string          `json:"id"`
+	Symbol             string          `json:"symbol"`
+	Name               string          `json:"name"`
+	AssetPlatformID    string          `json:"asset_platform_id"`
+	BlockTimeInMinutes int64           `json:"block_time_in_minutes"`
+	HashingAlgorithm   string          `json:"hashing_algorithm"`
+	Categories         []string        `json:"categories"`
+	DetailPlatforms    DetailPlatforms `json:"detail_platforms"`
 	// PublicNotice ¿? `json:"public_notice"`
 	// AdditionalNotices ¿? `json:"public_notices"`
 	Localization              types.Localization        `json:"localization"`
