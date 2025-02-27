@@ -61,3 +61,26 @@ func TestCoinsClient_NewCoins(t *testing.T) {
 		})
 	}
 }
+
+func TestCoinsClient_TrendingPools(t *testing.T) {
+	tests := []struct {
+		name string
+	}{
+		{
+			name: "test",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			c := NewProApiClient("CG-MgoD1AFUHHCHsKVid7dYMGSm", &http.Client{})
+
+			pools, err := c.PoolsClient.TrendingPools(context.Background(), "bsc", "6h", 70)
+			if err != nil {
+				t.Errorf("TrendingPools() error = %v", err)
+			}
+			if pools == nil {
+				t.Errorf("TrendingPools() got = nil, want not nil")
+			}
+		})
+	}
+}
