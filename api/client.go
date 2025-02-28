@@ -14,6 +14,7 @@ import (
 	"github.com/JulianToledano/goingecko/v3/api/global"
 	"github.com/JulianToledano/goingecko/v3/api/nfts"
 	"github.com/JulianToledano/goingecko/v3/api/onchaindex/pools"
+	"github.com/JulianToledano/goingecko/v3/api/onchaindex/tokens"
 	"github.com/JulianToledano/goingecko/v3/api/ping"
 	"github.com/JulianToledano/goingecko/v3/api/search"
 	"github.com/JulianToledano/goingecko/v3/api/simple"
@@ -52,6 +53,7 @@ type Client struct {
 	*global.GlobalClient
 	*companies.CompaniesClient
 	*pools.PoolsClient
+	*tokens.TokensClient
 }
 
 // NewDefaultClient creates a new Client using the default HTTP client and base URL
@@ -96,5 +98,6 @@ func newClient(c *geckohttp.Client, url string) *Client {
 		GlobalClient:         global.NewClient(c, url),
 		CompaniesClient:      companies.NewClient(c, url),
 		PoolsClient:          pools.NewClient(c, url),
+		TokensClient:         tokens.NewClient(c, url),
 	}
 }
