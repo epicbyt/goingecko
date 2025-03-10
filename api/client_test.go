@@ -4,6 +4,8 @@ import (
 	"context"
 	"net/http"
 	"testing"
+
+	"github.com/JulianToledano/goingecko/v3/api/onchaindex/simple"
 )
 
 func TestClient_CoinsList(t *testing.T) {
@@ -123,6 +125,32 @@ func TestCoinsClient_TokenMarketData(t *testing.T) {
 			c := NewProApiClient("xxx", &http.Client{})
 
 			tokenMetadata, err := c.TokensClient.TokensMarketData(context.Background(), "bsc", "0xf2c88757f8d03634671208935974b60a2a28bdb3")
+			if err != nil {
+				t.Errorf("TrendingPools() error = %v", err)
+			}
+			if tokenMetadata == nil {
+				t.Errorf("TrendingPools() got = nil, want not nil")
+			}
+		})
+	}
+}
+
+func TestCoinsClient_SimpleTokenPrice(t *testing.T) {
+	tests := []struct {
+		name string
+	}{
+		{
+			name: "test",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			c := NewProApiClient("xxx", &http.Client{})
+
+			tokenMetadata, err := c.TokenSimpleClient.SimplePrice(context.Background(), "bsc", "0x072a55c520a28947336ab5fc080abee38bc541ee",
+				true, simple.WithIncludeDayChangeOption(true),
+				simple.WithIncludeDayVolumeOption(true))
 			if err != nil {
 				t.Errorf("TrendingPools() error = %v", err)
 			}
