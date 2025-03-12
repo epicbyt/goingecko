@@ -2,6 +2,13 @@ package types
 
 import "github.com/JulianToledano/goingecko/v3/api/types"
 
+type PlatformDetail struct {
+	DecimalPlace    int    `json:"decimal_place"`
+	ContractAddress string `json:"contract_address"`
+}
+
+type DetailPlatforms map[string]PlatformDetail
+
 // TODO: missing a lot of info
 type ContractAddressInfo struct {
 	ID                 string            `json:"id"`
@@ -12,6 +19,8 @@ type ContractAddressInfo struct {
 	BlockTimeInMinutes int64             `json:"block_time_in_minutes"`
 	Hashing_algorithm  string            `json:"hashing_algorithm"`
 	Categories         []string          `json:"categories"`
+	DetailPlatforms    DetailPlatforms   `json:"detail_platforms"`
+
 	// public_notice `json:"//`"
 	// additional_notices [] `json:"//`"
 	Localization                    types.Localization        `json:"localization"`
